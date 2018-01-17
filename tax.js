@@ -4,45 +4,43 @@ var salesTaxRates = {
   SK: 0.10
 };
 
-var companySalesData = [
-{
-  name: "Telus",
-  province: "BC",
-  sales: [ 100, 200, 400 ]
-},
-{
-  name: "Bombardier",
-  province: "AB",
-  sales: [ 80, 20, 10, 100, 90, 500 ]
-},
-{
-  name: "Telus",
-  province: "SK",
-  sales: [ 500, 100 ]
-}
+var companySalesData = [{
+    name: "Telus",
+    province: "BC",
+    sales: [100, 200, 400]
+  },
+  {
+    name: "Bombardier",
+    province: "AB",
+    sales: [80, 20, 10, 100, 90, 500]
+  },
+  {
+    name: "Telus",
+    province: "SK",
+    sales: [500, 100]
+  }
 ];
 
 function calculatetax(companySalesData, salesTaxRates) {
   companyprofile = {};
-  for ( var i= 0; i < companySalesData.length; i++){
+  for (var i = 0; i < companySalesData.length; i++) {
     var totalSales = 0;
-    
-    for (var j = 0; j <companySalesData[i]["sales"].length; j++){
-      
+
+    for (var j = 0; j < companySalesData[i]["sales"].length; j++) {
+
       totalSales += companySalesData[i]["sales"][j];
-      
+
     }
     var totalTax = totalSales * salesTaxRates[companySalesData[i]["province"]];
 
-    if ( companySalesData[i]["name"] in companyprofile) {
+    if (companySalesData[i]["name"] in companyprofile) {
       console.log(companyprofile[companySalesData[i]["name"]]["totalSales"]);
-      companyprofile[companySalesData[i]["name"]]["totalSales"]+=totalSales;
-      companyprofile[companySalesData[i]["name"]]["totalTaxes"]+=totalTax;
-    }
-    else {
-      companyprofile[companySalesData[i]["name"]] = { 
+      companyprofile[companySalesData[i]["name"]]["totalSales"] += totalSales;
+      companyprofile[companySalesData[i]["name"]]["totalTaxes"] += totalTax;
+    } else {
+      companyprofile[companySalesData[i]["name"]] = {
 
-        "totalSales" : totalSales,  
+        "totalSales": totalSales,
         "totalTaxes": totalTax
       }
     }
@@ -52,6 +50,3 @@ function calculatetax(companySalesData, salesTaxRates) {
 
 }
 console.log(calculatetax(companySalesData, salesTaxRates));
-
-
-
